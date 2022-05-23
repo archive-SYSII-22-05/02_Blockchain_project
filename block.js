@@ -30,9 +30,12 @@ class Block{
         const timestamp = Date.now(); // Zeit im ms seit 01.01.1970 | UNIX
         const lastHash = lastBlock.hash; // HASH-Wert des Vorgängers
         const hash = Block.hash(timestamp,lastHash,ownData);
+        
+        // dazwischen liegt der Miningaufwand .... Energie!!!! / Zeit vergeht ....
+        // Sicher(er) wie Fort Knox! --> Proof of Work
 
 
-        return new this(timestamp,lastHash,hash,"ownData");
+        return new this(timestamp,lastHash,hash,ownData);
     }
 
     static hash(timestamp,lastHash,data){

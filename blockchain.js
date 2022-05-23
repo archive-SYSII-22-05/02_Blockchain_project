@@ -9,8 +9,13 @@ class Blockchain{
         this.chain = [Block.genesis()];
     }
 
-    addBlock(){
-
+    addBlock(data){
+        // Verweis auf Vorgänger --> arr.length - 1
+        const lastBlock  = this.chain[this.chain.length - 1]
+        // Block erzeugen
+        const block = Block.mineBlock(lastBlock,data);
+        // Block an Chain anhängen
+        this.chain.push(block);
     }
 
 }
