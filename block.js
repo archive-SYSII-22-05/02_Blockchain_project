@@ -25,19 +25,18 @@ class Block{
         return new this("Genesis time","-----","xABc1234",["data1","data2,data3"]);
     }
 
-    static mineBlock(){ // weitere Blocks in der Chain
+    static mineBlock(lastBlock,ownData){ // weitere Blocks in der Chain
 
         const timestamp = Date.now(); // Zeit im ms seit 01.01.1970 | UNIX
-        const lastHash = Block.hash("h1");
-        const hash = Block.hash("h2");
-
+        const lastHash = lastBlock.hash; // HASH-Wert des Vorgängers
+        const hash = Block.hash(timestamp,lastHash,ownData);
 
 
         return new this(timestamp,lastHash,hash,"ownData");
     }
 
-    static hash(testData){
-        return SHA256(testData).toString();
+    static hash(timestamp,lastHash,data){
+        return SHA256(`${timestamp}${lastHash}${data}`).toString();
     }
 
 }
