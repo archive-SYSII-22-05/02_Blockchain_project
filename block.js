@@ -18,6 +18,10 @@ class Block{
         `
     }
 
+    static genesis(){ // 1. Block der chain
+        return new this("Genesis time","-----","xABc1234",["data1","data2,data3"]);
+    }
+
 }
 
 module.exports = Block; // Export als Modul
